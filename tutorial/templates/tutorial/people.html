@@ -1,0 +1,23 @@
+{# tutorial/templates/tutorial/people.html #}
+{% load render_table from django_tables2 %}
+<!doctype html>
+<html>
+    <head>
+        <title>List of persons</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <style>
+        tr[data-delivery='True'] {
+            background-color: #db0f0f;
+        }
+        </style>
+
+    </head>
+    <body>
+
+        {% render_table table %}
+    </body>
+</html>
+
+
+
+
