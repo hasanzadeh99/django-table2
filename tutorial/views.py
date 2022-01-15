@@ -15,6 +15,7 @@ from .tables import PersonTable
 # views.py
 def person_list(request):
     table = PersonTable(Person.objects.all())
+    table.paginate(page=request.GET.get('page', 1), per_page=1)
 
     return render(request, 'tutorial/people.html', {
         "table": table

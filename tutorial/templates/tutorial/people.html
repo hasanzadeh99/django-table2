@@ -15,6 +15,9 @@
     <body>
 
         {% render_table table %}
+        {% for item in items %}
+        <a href="{% url 'main:delete_item' item.pk %}" type="submit" class="btn"><button>{{ item.id }}</button></a>
+        {% endfor %}
     </body>
 </html>
 

@@ -14,16 +14,26 @@ from .models import Person
 # tables.py
 import django_tables2 as tables
 
+
+class CheckBoxColumnWithName(tables.CheckBoxColumn):
+    @property
+    def header(self):
+        return self.verbose_name
+
+
+
+
 class PersonTable(tables.Table):
 
     idd=tables.Column()
+    iwe=CheckBoxColumnWithName(verbose_name=('Acked'), accessor='pk')
+    delete = tables.LinkColumn('main:delete_item', args=[('pk')], attrs={'a': {'class': 'btn'}})
 
     class Meta:
         model = Person
 
         attrs = {'class': 'table table-striped table-bordered table-hover'}
         row_attrs = {'data-delivery': lambda record: record.Acked}        
-        
         # attrs = {"class": "table table-hover table-sm",'backgroundColor': 'red'}
     # def __init__(self, *args, **kwargs):
     #     self.Column['c1'].Column.attrs = {"td":{"style" : "width:1%;" }}
