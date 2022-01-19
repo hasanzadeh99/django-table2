@@ -13,14 +13,12 @@ from .models import Person
 
 # tables.py
 import django_tables2 as tables
-
+import django_filters
 
 class CheckBoxColumnWithName(tables.CheckBoxColumn):
     @property
     def header(self):
         return self.verbose_name
-
-
 
 
 class PersonTable(tables.Table):
@@ -38,7 +36,7 @@ class PersonTable(tables.Table):
     # def __init__(self, *args, **kwargs):
     #     self.Column['c1'].Column.attrs = {"td":{"style" : "width:1%;" }}
         # self.columns['c2'].column.attrs = {"td":{"style" : "width:1%;" }}
-
+        template_name = "django_tables2/bootstrap4.html"
 
 
 

@@ -17,13 +17,21 @@ Including another URLconf
 
 
 # urls.py
-from django.urls import path
+from django.urls import path,include
+from django.conf import settings
 from django.contrib import admin
 
-from tutorial.views import person_list
 # from tutorial.views import PersonListView
+from tutorial.views import FilteredPersonListView, StaffList
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     # path("people/", PersonListView.as_view())
-    path("people/", person_list)]
+    path("people/", FilteredPersonListView.as_view()),
+    path("staff/", StaffList.as_view()),
+]
+
+if True:
+    import debug_toolbar
+
+    urlpatterns = [path("__debug__/", include(debug_toolbar.urls))] + urlpatterns

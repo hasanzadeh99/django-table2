@@ -1,5 +1,8 @@
-{# tutorial/templates/tutorial/people.html #}
+<!-- {# tutorial/templates/tutorial/people.html #}
+{% load bootstrap4 %}
+
 {% load render_table from django_tables2 %}
+
 <!doctype html>
 <html>
     <head>
@@ -14,6 +17,13 @@
     </head>
     <body>
 
+        {% if filter %}
+        <form action="" method="get" class="form form-inline">
+        {% bootstrap_form filter.form layout='inline' %}
+        {% bootstrap_button 'filter' %}
+        </form>
+        {% endif %}
+
         {% render_table table %}
         {% for item in items %}
         <a href="{% url 'main:delete_item' item.pk %}" type="submit" class="btn"><button>{{ item.id }}</button></a>
@@ -21,6 +31,8 @@
     </body>
 </html>
 
+
+ -->
 
 
 
